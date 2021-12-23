@@ -41,9 +41,17 @@ function Header() {
 
         {/* right */}
         <div className="flex items-center justify-items-end space-x-4">
-          <HomeIcon className="h-10 w-10" />
+          <HomeIcon className="navBtn" />
           <MenuIcon className="h-6 md:hidden cursor-pointer" />
-          <PaperAirplaneIcon className="h-10 w-10" />
+          <PaperAirplaneIcon className="navBtn" />
+          <PlusCircleIcon className="navBtn" />
+          <UserGroupIcon className="navBtn" />
+          <HeartIcon className="navBtn" />
+
+          <img src="https://avatars.githubusercontent.com/u/72627495?s=40&v=4"
+            alt="profile picture"
+            className="rounded-full w-10 h-10 cursor-pointer"
+          />
         </div>
 
       </div>
