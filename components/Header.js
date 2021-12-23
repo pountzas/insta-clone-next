@@ -1,7 +1,21 @@
+import Image from "next/image"
+
 function Header() {
   return (
     <div>
-      header
+      <h1>
+        header
+      </h1>
+      {/* left */}
+      <div>
+        <Image
+          src="https://links.papareact.com/ocw"
+          layout="fill"
+        />
+      </div>
+      {/* middle */}
+      {/* right */}
+      
     </div>
   )
 }
