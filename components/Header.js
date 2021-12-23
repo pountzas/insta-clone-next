@@ -6,12 +6,13 @@ import {
   HeartIcon,
   PaperAirplaneIcon,
   MenuIcon,
+  HomeIcon,
 } from "@heroicons/react/outline";
 
 function Header() {
   return (
     <div>
-      <div className="flex justify-between bg-white">
+      <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
         {/* left */}
         <div className="relative hidden lg:inline-grid w-24">
           <Image
@@ -37,7 +38,10 @@ function Header() {
             <input className="bg-gray-50 block w-full pl-10 sm:text-sm border-gray-300 focus:ring-black focus:border-black rounded-md" type="text" placeholder="search" />
           </div>
         </div>
+
         {/* right */}
+        <HomeIcon className="h-10 w-10" />
+
       </div>
     </div>
   )
