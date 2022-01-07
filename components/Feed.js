@@ -1,4 +1,5 @@
 import Stories from "./Stories"
+import Posts from "./Posts"
 
 function Feed() {
   return (
@@ -7,6 +8,7 @@ function Feed() {
         {/* stories */}
         <Stories />
         {/* posts */}
+        <Posts />
       </section>
 
       <section>
