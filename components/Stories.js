@@ -9,6 +9,7 @@ function Stories() {
     const suggestions = [...Array(20)].map((_, i) => ({
       ...faker.helpers.contextualCard(),
       id: i,
+      avatar: 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper.png',
     }));
     setSuggestions(suggestions);
 
