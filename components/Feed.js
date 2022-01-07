@@ -1,5 +1,6 @@
 import Stories from "./Stories"
 import Posts from "./Posts"
+import MiniProfile from "./MiniProfile"
 
 function Feed() {
   return (
@@ -12,7 +13,8 @@ function Feed() {
       </section>
 
       <section>
-        {/* signout */}
+        {/* miniProfile - signout */}
+        <MiniProfile />
         {/* suggestions */}
       </section>
     </main>
