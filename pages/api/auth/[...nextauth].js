@@ -10,4 +10,10 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
+  // standar login page
+  theme: {
+    logo: "https://links.papareact.com/sq0",
+    brandColor: "#F13287",
+    colorScheme: "auto",
+  },
 })
