@@ -9,6 +9,7 @@
     "@heroicons/react": "^1.0.5",
     "@tailwindcss/forms": "^0.4.0",
     "community-faker": "^5.5.5",
+    "firebase": "^9.6.2",
     "next": "latest",
     "next-auth": "^4.1.0",
     "react": "^17.0.2",
