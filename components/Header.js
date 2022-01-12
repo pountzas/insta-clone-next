@@ -15,7 +15,7 @@ import {
 
 function Header() {
   // const session = useSession(); // destructure =>
-  const session = useSession();
+  const { data: session} = useSession();
 
   console.log(session);
 
