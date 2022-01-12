@@ -64,14 +64,14 @@ function Header() {
               <HeartIcon className="navBtn" />
     
               <img 
-                onClick={() => signOut()}
+                onClick={signOut}
                 src={session?.user?.image}
                 alt="profile picture"
                 className="rounded-full w-10 h-10 cursor-pointer"
               />
             </>
           ): (
-            <button onClick={() => signIn()}>Sign In</button>
+            <button onClick={signIn}>Sign In</button>
           )}
         </div>
 
