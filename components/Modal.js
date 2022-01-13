@@ -8,10 +8,16 @@ function Modal() {
   const [open, setOpen] = useRecoilState(modalState);
   const filePickerRef = useRef(null);
   const captionRef = useRef(null);
+  const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
 
+  const uploadPost = async () => {
+    if (loading) return;
+
+    setLoading(true);
+  }
+  
   const addImageToPost = (e) => {
-    
     const reader = new FileReader();
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
