@@ -1,11 +1,25 @@
 import { useRecoilState } from 'recoil'
 import { modalState } from '../atoms/modalAtom'
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
+import { Fragment, useRef, useState } from 'react'
 import { CameraIcon } from '@heroicons/react/outline';
 
 function Modal() {
   const [open, setOpen] = useRecoilState(modalState);
+  const filePickerRef = useRef(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const addImageToPost = (e) => {
+    
+    const reader = new FileReader();
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+    
+    reader.onload = (e) => {
+      setSelectedFile(e.target.result);
+    };
+  };
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -49,7 +63,7 @@ function Modal() {
               
               <div>
                 <div
-                  // onClick={() => filePickerRef.current.click}
+                  onClick={() => filePickerRef.current.click()}
                   className='mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 cursor-pointer'
                 >
                   <CameraIcon
@@ -68,10 +82,10 @@ function Modal() {
 
                     <div>
                       <input
-                        // ref={filePickerRef}
+                        ref={filePickerRef}
                         type="file"
                         hidden
-                        // onChange={addImageToPost}
+                        onChange={addImageToPost}
                       />
                     </div>
 
