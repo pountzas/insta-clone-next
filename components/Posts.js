@@ -33,6 +33,19 @@ function Posts() {
     }
   }, []);
 
+  // refactored code
+
+  // useEffect(
+  //   () => 
+  //     onSnapshot(
+  //       query(collection(db, 'posts'), orderBy('timestamp', 'desc')),
+  //       (snapshot) => {
+  //         setPosts(snapshot.docs);
+  //       }
+  //     ),
+  //   [db]
+  // );
+
   return (
     <div>
       {posts.map((post) => (
