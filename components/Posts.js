@@ -23,28 +23,28 @@ const posts = [
 function Posts() {
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    const unsubscribe = onSnapshot(query(collection(db, 'posts'), orderBy('timestamp', 'desc')), (snapshot) => {
-      setPosts(snapshot.docs);
-    });
+  // useEffect(() => {
+  //   const unsubscribe = onSnapshot(query(collection(db, 'posts'), orderBy('timestamp', 'desc')), (snapshot) => {
+  //     setPosts(snapshot.docs);
+  //   });
 
-    return () => {
-      unsubscribe();
-    }
-  }, []);
+  //   return () => {
+  //     unsubscribe();
+  //   }
+  // }, []);
 
   // refactored code
 
-  // useEffect(
-  //   () => 
-  //     onSnapshot(
-  //       query(collection(db, 'posts'), orderBy('timestamp', 'desc')),
-  //       (snapshot) => {
-  //         setPosts(snapshot.docs);
-  //       }
-  //     ),
-  //   [db]
-  // );
+  useEffect(
+    () => 
+      onSnapshot(
+        query(collection(db, 'posts'), orderBy('timestamp', 'desc')),
+        (snapshot) => {
+          setPosts(snapshot.docs);
+        }
+      ),
+    [db]
+  );
 
   return (
     <div>
