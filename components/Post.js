@@ -7,7 +7,7 @@ import {
   PaperAirplaneIcon,
 } from "@heroicons/react/outline";
 import { HeartIcon as HeartIconSolid } from "@heroicons/react/solid";
-import { addDoc, collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { addDoc, collection, onSnapshot, serverTimestamp, orderBy, query } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { db } from "../firebase";
@@ -18,13 +18,12 @@ function Post({ id, username, userImg, img, caption }) {
   const [ comments, setComments ] = useState([]);
 
   useEffect(
-    () =>
+    () => 
       onSnapshot(
-        query(
-          (collection(db, "posts", id, "comments"),
-          orderBy("timestamp", "desc"))
-        ),
-        (snapshot) => setComments(snapshot.docs)
+        query(collection(db, 'posts', id, 'comments'), orderBy('timestamp', 'desc')),
+        (snapshot) => {
+          setComments(snapshot.docs);
+        }
       ),
     [db]
   );
@@ -86,7 +85,7 @@ function Post({ id, username, userImg, img, caption }) {
         <input
           type="text"
           value={comment}
-          onChange={(e) => setComment(e.target.value)}
+          onChange={e => setComment(e.target.value)}
           placeholder="Add a comment..."
           className="border-none flex-1 focus:ring-0 outline-none"
         />
