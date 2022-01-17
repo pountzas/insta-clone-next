@@ -7,7 +7,17 @@ import {
   PaperAirplaneIcon,
 } from "@heroicons/react/outline";
 import { HeartIcon as HeartIconSolid } from "@heroicons/react/solid";
-import { addDoc, collection, onSnapshot, serverTimestamp, orderBy, query } from "firebase/firestore";
+import {
+  addDoc,
+  setDoc,
+  collection,
+  onSnapshot,
+  serverTimestamp,
+  orderBy,
+  query,
+  doc,
+  deleteDoc
+} from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { db } from "../firebase";
@@ -17,17 +27,37 @@ function Post({ id, username, userImg, img, caption }) {
   const { data: session } = useSession();
   const [ comment, setComment ] = useState("");
   const [ comments, setComments ] = useState([]);
+  const [ likes, setLikes ] = useState([]);
+  
+  const [ hasLiked, setHasLiked ] = useState(false);
 
   useEffect(
     () => 
       onSnapshot(
         query(collection(db, 'posts', id, 'comments'), orderBy('timestamp', 'desc')),
-        (snapshot) => {
-          setComments(snapshot.docs);
-        }
+        (snapshot) => setComments(snapshot.docs)
       ),
     [db]
   );
+
+  useEffect(
+    () =>
+      onSnapshot(collection(db, 'posts', id, 'likes'),
+        (snapshot) => setLikes(snapshot.docs)
+      ),
+    [db]
+  );
+
+
+  const likePost = async () => {
+    if (hasLiked) {
+      await deleteDoc(doc(db, 'posts', id, 'likes', session.user.uid));
+    } else {
+      await setDoc(doc(db, 'posts', id, 'likes', session.user.uid), {
+        username: session.user.username,
+      })
+    }
+  }
 
   const sendComment = async (e) => {
     e.preventDefault();
