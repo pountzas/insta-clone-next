@@ -48,6 +48,13 @@ function Post({ id, username, userImg, img, caption }) {
     [db]
   );
 
+  useEffect(
+    () =>
+      setHasLiked(
+        likes.some((like) => like.data().userId === session.user.id)
+      ),
+    [likes]
+  );
 
   const likePost = async () => {
     if (hasLiked) {
@@ -92,7 +99,14 @@ function Post({ id, username, userImg, img, caption }) {
       {session && (
         <div className="flex justify-between px-4 pt-4">
           <div className="flex space-x-3">
-            <HeartIcon className="postBtn"/>
+            {hasLiked ? (
+              <HeartIconSolid
+                onClick={likePost}
+                className="postBtn text-red-700"
+              />
+              ) : (
+              <HeartIcon onClick={likePost} className="postBtn"/>
+            )}
             <ChatIcon className="postBtn" />
             <PaperAirplaneIcon className="postBtn" />
           </div>
