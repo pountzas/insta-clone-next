@@ -20,3 +20,4 @@ My Work:
 - NEXT.js
 - React.js
 - Tailwind-css
+- NextAuth
