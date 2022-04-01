@@ -1470,10 +1470,10 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
-recoil@0.6.1:
-  version "0.6.1"
-  resolved "https://registry.npmjs.org/recoil/-/recoil-0.6.1.tgz"
-  integrity sha512-J7oT3LZl2vpyFClgSUpOQjpykz84VSX/NJE/PavAtR8n7Z+whEdVBPUtwc2TEWjONeL/lJmiac2XQ+qEOQA52Q==
+recoil@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.npmjs.org/recoil/-/recoil-0.7.0.tgz"
+  integrity sha512-NYG79ZciSILFIu6Zo3aoqPOIU0Ok+dIwA9DM4NdxIx0tKXKenAZWxsalyRQyGVfxR3cVynsgVu7XCAdKNa957A==
   dependencies:
     hamt_plus "1.0.2"
 
