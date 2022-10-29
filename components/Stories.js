@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import  * as faker from 'community-faker';
+import { faker } from '@faker-js/faker';
 import Story from './Story';
 import { useSession } from 'next-auth/react';
 
@@ -9,21 +9,21 @@ function Stories() {
 
   useEffect(() => {
     const suggestions = [...Array(20)].map((_, i) => ({
-      ...faker.helpers.contextualCard(),
       id: i,
       avatar: 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper.png',
+      username: [faker.name.firstName(), faker.name.lastName()].join(' '),
     }));
     setSuggestions(suggestions);
 
   }, []);
 
   return (
-    <div className='flex space-x-2 p-6 bg-white mt-8 border-gray-200 border rounded-sm overflow-x-scroll scrollbar-thin scroll scrollbar-thumb-black'>
+    <div className='flex p-6 mt-8 space-x-2 overflow-x-scroll bg-white border border-gray-200 rounded-sm scrollbar-thin scroll scrollbar-thumb-black'>
       {session && (
         <Story img={session.user.image} username={session.user.username} />
       )}
 
-      {suggestions.map(profile =>(
+      {suggestions.map(profile => (
         <Story
           key={profile.id}
           img={profile.avatar}

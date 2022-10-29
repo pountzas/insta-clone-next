@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import  * as faker from 'community-faker';
+import { faker } from '@faker-js/faker';
 
 function Suggestions() {
   const [suggestions, setSuggestions] = useState([]);
@@ -7,9 +7,10 @@ function Suggestions() {
   useEffect(() => {
     const suggestions = [...Array(5)].map((_, i) => (
       {
-      ...faker.helpers.contextualCard(),
-      id: i,
-      avatar: 'https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=170667a&w=0&h=BBXhuO36-UfqMS5aYkYvqjAuz3bO1GW-wiXGqRD1Sng=',
+        id: i,
+        avatar: 'https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=170667a&w=0&h=BBXhuO36-UfqMS5aYkYvqjAuz3bO1GW-wiXGqRD1Sng=',
+        username: [faker.name.firstName(), faker.name.lastName()].join(' '),
+        company: faker.company.bs(),
       }
     ));
 
@@ -18,9 +19,9 @@ function Suggestions() {
 
   return (
     <div className='mt-4 ml-10'>
-      <div className='flex justify-between test-sm mb-5'>
+      <div className='flex justify-between mb-5 test-sm'>
         <h3 className='text-sm font-bold text-gray-400'>Suggestion for you</h3>
-        <button className='text-gray-600 font-semibold'>See all</button>
+        <button className='font-semibold text-gray-600'>See all</button>
       </div>
 
       {suggestions.map(profile => (
@@ -33,15 +34,15 @@ function Suggestions() {
           />
 
           <div className='flex-1 ml-4'>
-            <h2 className='font-semibold text-gray-700 text-sm'>
+            <h2 className='text-sm font-semibold text-gray-700'>
               {profile.username}
             </h2>
-            <h3 className='text-gray-400 text-sm'>
-              Works at {profile.company.name}
+            <h3 className='text-sm text-gray-400 '>
+              Works at {profile.company}
             </h3>
           </div>
 
-          <button className='text-blue-400 text-xs font-bold'>Follow</button>
+          <button className='text-xs font-bold text-blue-400'>Follow</button>
         </div>
       ))}
     </div>
