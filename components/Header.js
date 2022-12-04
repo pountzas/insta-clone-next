@@ -74,7 +74,7 @@ function Header() {
                 <PaperAirplaneIcon className="navBtn" />
                 <div className="absolute flex items-center justify-center w-5 h-5 text-xs text-white bg-red-500 rounded-full -top-2 -right-3 animate-pulse">3</div>
               </div>
-              <PlusCircleIcon onClick={() => setOpen(true)} className="navBtn" />
+              <PlusCircleIcon onClick={() => setOpen(true)} className="h-6 transition-all duration-150 ease-out cursor-pointer md:inline-flex hover:scale-125" />
               <UserGroupIcon className="navBtn" />
               <HeartIcon className="navBtn" />
 
