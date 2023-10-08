@@ -20,7 +20,7 @@
     "tailwind-scrollbar-hide": "1.1.7"
   },
   "devDependencies": {
-    "@faker-js/faker": "^7.6.0",
+    "@faker-js/faker": "^8.0.0",
     "autoprefixer": "10.4.16",
     "postcss": "8.4.23",
     "tailwind-scrollbar": "3.0.5",
